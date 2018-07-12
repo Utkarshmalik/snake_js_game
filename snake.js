@@ -44,7 +44,7 @@ const generateTarget =()=>
 rand_width= rand_width- rand_width%30;
 rand_height= rand_height - rand_height%30;
 ctx.fillStyle="pink";
-ctx.fillRect(rand_width,rand_height,box,box);
+ctx.fillRect(rand_width,rand_height,box-2,box-2);
 }
 
 
@@ -60,7 +60,7 @@ const updateField= ()=>
   if(i===0)
   {
     ctx.fillStyle="red";
-    ctx.fillRect(snake[i].x,snake[i].y,box,box);
+    ctx.fillRect(snake[i].x,snake[i].y,box-2,box-2);
     //ctx.strokeRect(snake[i].x,snake[i].y,box,box);
   }
 
@@ -68,7 +68,7 @@ const updateField= ()=>
   else
   {
     ctx.fillStyle="blue";
-    ctx.fillRect(snake[i].x,snake[i].y,box,box);
+    ctx.fillRect(snake[i].x,snake[i].y,box-2,box-2);
    // ctx.strokeRect(snake[i].x,snake[i].y,box,box); (i wanted to add this , but there is no way i have till now)
   }
 }
