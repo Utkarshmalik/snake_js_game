@@ -1,6 +1,11 @@
 const canvas =document.querySelector('canvas');
 const score_plate=document.getElementsByClassName("score-screen")[0];
 
+const status=document.getElementsByClassName("status")[0];
+const userName_2=document.getElementsByClassName("username")[1]; // the username in the last screen
+
+
+//const modal_3= document.getElementsByClassName("modal-3")[0]; // The second page
 
 
 
@@ -8,9 +13,15 @@ const box=30; //box dimension
 let snake=[];
 let score=0;
 
-//intial head of snake (just for testing)
+const setInitial = (snake) =>
+{
 snake[0]={x:10*box,y:10*box};
 snake[1]={x:9*box,y:10*box};
+return snake;
+}
+
+snake=setInitial(snake);
+
 
 
 let ctx =canvas.getContext('2d');
@@ -178,13 +189,27 @@ const fun =(event)=>
     ctx.clearRect(snake[snake.length-1].x,snake[snake.length-1].y,box,box); 
 
     snake.pop();
-
   }
 
 
   if(LostGame(newHead))
   {
+
     console.log("you have lost the game");
+    userName_2.innerHTML=text_field.value;
+    status.innerHTML=`Your final score is:${score}.`
+    modal_3.style.display="block";
+    for(let i=0;i<snake.length;i++)
+  {
+    console.log(snake[i]);
+    ctx.clearRect(snake[i].x,snake[i].y,box,box);
+  }
+  snake=[];
+
+  snake=setInitial(snake);
+
+
+
   }
 
   updateField();
