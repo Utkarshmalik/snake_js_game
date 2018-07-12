@@ -1,0 +1,231 @@
+const canvas =document.querySelector('canvas');
+const score_plate=document.getElementsByClassName("score-screen")[0];
+
+
+
+
+const box=30; //box dimension 
+let snake=[];
+let score=0;
+
+//intial head of snake (just for testing)
+snake[0]={x:10*box,y:10*box};
+snake[1]={x:9*box,y:10*box};
+
+
+let ctx =canvas.getContext('2d');
+
+
+
+let rand_width=0;
+let rand_height=0;
+
+//function to generate random object
+const generateTarget =()=>
+{
+
+//this is just for testing later we will make them seperate functions
+
+//Now generating the random target within the grid
+ rand_width= Math.floor(canvas.width * Math.random())+1;  // this gives a number between 0 and canvas width
+ rand_height= Math.floor(canvas.height * Math.random())+1; //this gives a number between 0 and canvas height
+//these has to be a multiple of 30
+rand_width= rand_width- rand_width%30;
+rand_height= rand_height - rand_height%30;
+ctx.fillStyle="pink";
+ctx.fillRect(rand_width,rand_height,box,box);
+}
+
+
+//function that displays the snake
+
+const updateField= ()=>
+{
+  
+  for(let i=0;i<snake.length;i++) //looping through snake
+{
+  //head will be red
+
+  if(i===0)
+  {
+    ctx.fillStyle="red";
+    ctx.fillRect(snake[i].x,snake[i].y,box,box);
+    //ctx.strokeRect(snake[i].x,snake[i].y,box,box);
+  }
+
+  // rest all of different color
+  else
+  {
+    ctx.fillStyle="blue";
+    ctx.fillRect(snake[i].x,snake[i].y,box,box);
+   // ctx.strokeRect(snake[i].x,snake[i].y,box,box); (i wanted to add this , but there is no way i have till now)
+  }
+}
+}
+
+updateField();
+generateTarget();
+
+
+//function to check if user has lost the game or not
+const LostGame=(newHead)=>
+{
+  let temp=0;
+  //conditon1- if the head crooses the border
+
+  if(newHead.x<0 || newHead.y<0 || newHead.x>canvas.width-30 || newHead.y>canvas.height-30)
+  {
+    temp=1;
+    return(1);
+  }
+  //condition2- if the user touches any part of its tail-for this i have to check each part of its tail and compare
+
+  for(let i=1;i<snake.length;i++)
+  {
+    if(newHead.x===snake[i].x && newHead.y===snake[i].y)
+    {
+      temp=1;
+    }
+
+  }
+
+  return temp;
+}
+
+
+
+
+
+let direction="right";
+//functions that defines the direction , recieves the new head , deletes the tail and updates it .
+const fun =(event)=>
+{
+  let isReverseDirection=false;
+
+  if(event.keyCode===37)
+  {
+    if(direction==="right")
+    {
+      isReverseDirection=true;
+    }
+    else
+    {
+    direction="left";
+    }
+
+  }
+
+  else if(event.keyCode===38)
+  {
+    if(direction==="down")
+    {
+      isReverseDirection=true;
+    }
+
+    else
+    {
+
+    direction="top";
+    }
+  }
+
+  else if(event.keyCode===39)
+  {
+    if(direction==="left")
+    {
+      isReverseDirection=true;
+    }
+    else
+    {
+    direction="right";
+    }
+  }
+  else if(event.keyCode===40)
+  {
+    if(direction==="top")
+    {
+      isReverseDirection=true;
+    }
+
+    else
+    {
+      direction="down";
+    }
+  }
+
+  //this will have to work only if the direction is not reverse of the current one
+
+  if(!isReverseDirection)
+  {
+
+  let newHead = createNewHead(snake[0],direction);
+  snake.unshift(newHead);
+  
+  if(newHead.x==rand_width && newHead.y===rand_height)
+  {
+     //increase the length of the snake and generate a new target
+    console.log("won");
+    score++;
+    score_plate.innerHTML="Score:"+score;
+    console.log("Score:"+score);
+   
+    generateTarget();
+  }
+
+  else
+  {
+    
+    ctx.clearRect(snake[snake.length-1].x,snake[snake.length-1].y,box,box); 
+
+    snake.pop();
+
+  }
+
+
+  if(LostGame(newHead))
+  {
+    console.log("you have lost the game");
+  }
+
+  updateField();
+
+
+  }
+
+  
+  
+}
+
+
+
+//function that returns the newly created head
+const createNewHead= (oldHead,direction)=>
+{
+
+  let newHead;
+
+  switch(direction)
+  {
+
+    case("left"):
+      newHead={x:oldHead.x-box,y:oldHead.y};
+      break;
+
+    case("right"):
+    newHead={x:oldHead.x+box,y:oldHead.y};
+    break;
+    
+    case("top"):
+      newHead={x:oldHead.x,y:oldHead.y-box};
+      break;
+
+    case("down"):
+    newHead={x:oldHead.x,y:oldHead.y+box};
+    break;
+  }
+
+  return(newHead);
+}
+
+window.addEventListener('keydown',fun);
+
