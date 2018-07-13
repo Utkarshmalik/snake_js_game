@@ -3,6 +3,7 @@
 
 const status=document.getElementsByClassName("status")[0];
 const userName_2=document.getElementsByClassName("username")[1]; 
+score_screen=document.getElementsByClassName("score-screen")[0]
 
 let gameOn=true;//flag to know when we have to start the game
 //this is to set the game interval 
@@ -31,6 +32,7 @@ const stop=()=>{
   positionX=positionY=10;
   //amking the speed zero other wise even if the game is stopped it will keep moving
   xv=yv=0;
+  points=0
 }
 //function for running the game
 const startGame=()=>{
@@ -146,6 +148,7 @@ const game=()=>{
    //snake hits the target
     if(TargetX==positionX && TargetY==positionY) {
       points++;
+      score_screen.innerHTML="Score:"+points;
         tail++;
        newTarget()
     }
