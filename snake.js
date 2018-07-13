@@ -44,7 +44,7 @@ const generateTarget =()=>
 rand_width= rand_width- rand_width%30;
 rand_height= rand_height - rand_height%30;
 ctx.fillStyle="pink";
-ctx.fillRect(rand_width,rand_height,box,box);
+ctx.fillRect(rand_width,rand_height,box-2,box-2);
 }
 
 
@@ -60,7 +60,7 @@ const updateField= ()=>
   if(i===0)
   {
     ctx.fillStyle="red";
-    ctx.fillRect(snake[i].x,snake[i].y,box,box);
+    ctx.fillRect(snake[i].x,snake[i].y,box-2,box-2);
     //ctx.strokeRect(snake[i].x,snake[i].y,box,box);
   }
 
@@ -68,10 +68,11 @@ const updateField= ()=>
   else
   {
     ctx.fillStyle="blue";
-    ctx.fillRect(snake[i].x,snake[i].y,box,box);
+    ctx.fillRect(snake[i].x,snake[i].y,box-2,box-2);
    // ctx.strokeRect(snake[i].x,snake[i].y,box,box); (i wanted to add this , but there is no way i have till now)
   }
 }
+
 }
 
 updateField();
@@ -79,21 +80,21 @@ generateTarget();
 
 
 //function to check if user has lost the game or not
-const LostGame=(newHead)=>
+const LostGame=(head,array)=>
 {
   let temp=0;
   //conditon1- if the head crooses the border
 
-  if(newHead.x<0 || newHead.y<0 || newHead.x>canvas.width-30 || newHead.y>canvas.height-30)
+  if(head.x<0 || head.y<0 || head.x>canvas.width-30 || head.y>canvas.height-30)
   {
     temp=1;
     return(1);
   }
   //condition2- if the user touches any part of its tail-for this i have to check each part of its tail and compare
 
-  for(let i=1;i<snake.length;i++)
+  for(let i=1;i<array.length;i++)
   {
-    if(newHead.x===snake[i].x && newHead.y===snake[i].y)
+    if(head.x===array[i].x && head.y===array[i].y)
     {
       temp=1;
     }
@@ -165,12 +166,18 @@ const fun =(event)=>
   }
 
   //this will have to work only if the direction is not reverse of the current one
+ 
 
   if(!isReverseDirection)
   {
 
   let newHead = createNewHead(snake[0],direction);
   snake.unshift(newHead);
+
+    //   if( direction == "left") snakeX -= box;
+    // if( direction == "top") snakeY -= box;
+    // if( direction == "rightT") snakeX += box;
+    // if( direction == "down") snakeY += box;
   
   if(newHead.x==rand_width && newHead.y===rand_height)
   {
@@ -192,7 +199,7 @@ const fun =(event)=>
   }
 
 
-  if(LostGame(newHead))
+  if(LostGame(newHead,snake))
   {
 
     console.log("you have lost the game");
@@ -202,7 +209,7 @@ const fun =(event)=>
     for(let i=0;i<snake.length;i++)
   {
     console.log(snake[i]);
-    ctx.clearRect(snake[i].x,snake[i].y,box,box);
+    ctx.clearRect(snake[i].x,snake[i].y,box-2,box-2);
   }
   snake=[];
 
@@ -233,7 +240,7 @@ const createNewHead= (oldHead,direction)=>
   {
 
     case("left"):
-      newHead={x:oldHead.x-box,y:oldHead.y};
+      newHead={x:oldHead.x-=box,y:oldHead.y};
       break;
 
     case("right"):
