@@ -1,6 +1,14 @@
 //I have fixed some issues but generated some other like opposite direction blocking is not present
 //secondly colloision with itself it is just eating it self and not ending the game
 
+let dead = new Audio();
+let eat = new Audio();
+
+
+dead.src = "audio/dead.mp3";
+eat.src = "audio/eat.mp3";
+
+
 const status=document.getElementsByClassName("status")[0];
 const userName_2=document.getElementsByClassName("username")[1]; 
 score_screen=document.getElementsByClassName("score-screen")[0]
@@ -130,7 +138,7 @@ const game=()=>{
 
 
     if(LostGame(positionX,positionY,snake)){
-      
+      dead.play();
       stopGame()
       }
     //defining the canvas
@@ -149,6 +157,7 @@ const game=()=>{
    //snake hits the target
     if(TargetX==positionX && TargetY==positionY) {
       points++;
+      eat.play();
       score_screen.innerHTML="Score:"+points;
         tail++;
        newTarget()
