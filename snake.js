@@ -1,3 +1,19 @@
+import Particles from 'react-particles-js';
+const para=
+{
+  particles: {
+
+    number:
+    {
+      value:170,
+      density:
+      {
+      enable:true,
+      value_area:800
+      }
+    }
+  }
+}
 const canvas =document.querySelector('canvas');
 const score_plate=document.getElementsByClassName("score-screen")[0];
 
