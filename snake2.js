@@ -38,6 +38,7 @@ const stop=()=>{
 const startGame=()=>{
   
     canvas=document.querySelector("canvas");
+
     ctx=canvas.getContext("2d");
     if(gameOn===true){
     document.addEventListener("keydown",keyPush);
@@ -101,7 +102,7 @@ const LostGame=(positionX,positionY,array)=>
   let temp=0;
   //conditon1- if the head crooses the border
 
-  if(positionX<=-1 || positionY<=-1 || positionX>tcX || positionY>tcY)
+  if(positionX<-1 || positionY<-1 || positionX>tcX || positionY>tcY)
   {
     temp=1;
     return(temp);
