@@ -1,40 +1,48 @@
+//I have fixed some issues but generated some other like opposite direction blocking is not present
+//secondly colloision with itself it is just eating it self and not ending the game
 
 const status=document.getElementsByClassName("status")[0];
 const userName_2=document.getElementsByClassName("username")[1]; 
-let gameOn=true;
-let btnP =1
+
+let gameOn=true;//flag to know when we have to start the game
+//this is to set the game interval 
+let btnP =1 
+
+//function to set the game
 const setGame=()=>{
-  
  gameOn=true
   startGame()
+  //every time new game was started the interval got divided by 10 so to stop that each time we multiply it by 10
   btnP =btnP*10
 
-
 }
+//function to stop the game after colloisons with the walls
 const stopGame=()=>{
   gameOn=false
    userName_2.innerHTML=text_field.value;
    status.innerHTML=` Your final score is:${points}`;
-       modal_3.style.display="block";
+   modal_3.style.display="block";
   stop();
 }
 
-
-
+//this could be added in the earliew function 
 const stop=()=>{
-   
+  //setting the position to inital
   positionX=positionY=10;
+  //amking the speed zero other wise even if the game is stopped it will keep moving
   xv=yv=0;
 }
-
+//function for running the game
 const startGame=()=>{
   
     canvas=document.querySelector("canvas");
     ctx=canvas.getContext("2d");
     if(gameOn===true){
     document.addEventListener("keydown",keyPush);
-    
     setInterval(game,1000 *btnP /10);
+    //each time this function is called the time interval is set 
+    //for example if this function is called the second time btnP=10 so interval will remain constant 
+
   }
     
 }
@@ -96,6 +104,7 @@ const LostGame=(positionX,positionY,array)=>
     temp=1;
     return(temp);
   }
+
   //condition2- if the user touches any part of its tail-for this i have to check each part of its tail and compare
 
   // for(let i=1;i<array.length;i++)
@@ -134,7 +143,7 @@ const game=()=>{
     while(snake.length>tail) {
     snake.shift();
     }
-   
+   //snake hits the target
     if(TargetX==positionX && TargetY==positionY) {
       points++;
         tail++;
