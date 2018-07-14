@@ -29,7 +29,7 @@ const onNameSubmit =()=>
 const onGameStart= () =>
 {
   user_screen.innerHTML="Hey "+text_field.value;
-  score_screen.innerHTML="Score:"+score;
+  score_screen.innerHTML="Score:"+points;
   modal_2.style.display="none";
 }
 
@@ -38,7 +38,7 @@ const onGameRestart =() =>
   updateField();
   modal_3.style.display="none";
   score=0;
-  score_screen.innerHTML="Score:"+score;
+  score_screen.innerHTML="Score:"+points;
 
 }
 

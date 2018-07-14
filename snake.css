@@ -20,6 +20,7 @@ body
   background-size:cover;
   background-position:center;
 
+
 }
 
 
@@ -31,6 +32,8 @@ body
   top:30px;
   left:90px;
   background-color:green;
+
+
 }
 
 .modal-1
@@ -41,8 +44,16 @@ body
   position: fixed;
   top:0px;
   left:0px;
+/*<<<<<<< HEAD*/
+  background-color:grey;
+     animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+
+/*=======*/
   background-image:url("img12.jpg");
   background-size:cover;
+/*>>>>>>> bc0b1c6addff8533afe0616e0eb982d0e21c1528*/
 
 
 }
@@ -116,6 +127,9 @@ body
   text-decoration:underline;
 }
 
+/*<<<<<<< HEAD*/
+
+
 .primary-head
 {
   font-family:Crazy Dots;
@@ -123,7 +137,7 @@ body
   color:#1E1E24;
   letter-spacing:4px;
   margin:5px;
-
+animation:moveInLeft 1s ease-out;
 }
 
 .tertiary-head
@@ -131,6 +145,7 @@ body
   color:black;
   font-family: 'Monoton',cursive;
   letter-spacing:3px;
+   animation:moveInLeft 1s ease-out;
 
 }
 
@@ -140,6 +155,8 @@ body
   font-size:60px;
   letter-spacing:3px;
   margin:5px;
+  animation:moveInRight 1s ease-out;
+   
 }
 
 .text-field
@@ -150,9 +167,20 @@ body
   color:greenyellow;
   font-size:30px;
   font-family:'Wendy One', sans-serif;
- 
+   animation:moveInBottom 1s ease-out 0.75s;
+   animation-fill-mode: backwards;
 
 
+}
+.animate{
+   animation:moveInBottom 1s ease-out 0.75s;
+  animation-fill-mode: backwards;
+
+}
+.username{
+  text-transform: uppercase;
+   animation:moveInBottom 1s ease-out 0.75s;
+  animation-fill-mode: backwards;
 }
 
 .button
@@ -167,7 +195,21 @@ body
   color:black;
   background-color:greenyellow;
   font-family:'Wendy One', sans-serif;
+   animation:moveInBottom 1s ease-out 0.75s;
+   animation-fill-mode: backwards;
 
+}
+.start-button{
+  animation-delay: 0s;
+}
+.button:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.button:active{
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
 }
 
 .list
@@ -177,6 +219,7 @@ body
   text-align: left;
   font-size:22px;
   background-color:yellow;
+  animation:moveInRight 1s ease-out;
 
 
 }
@@ -189,7 +232,9 @@ body
 .status
 {
   background-color:yellowgreen;
+
 }
+
 
 
 
@@ -201,3 +246,61 @@ body
 }
 */
 
+/*>>>>>>> bc0b1c6addff8533afe0616e0eb982d0e21c1528*/
+
+@keyframes moveInRight{
+  0%{
+     opacity:0;
+     transform: translateX(100px);
+
+  }
+
+    80%{
+    transform: translateX(-10px);
+    }
+
+  100%{
+    opacity:1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInLeft{
+  0%{
+     opacity:0;
+     transform: translateX(-100px);
+
+  }
+
+    80%{
+    transform: translateX(10px);
+    }
+
+  100%{
+    opacity:1;
+    transform: translate(0);
+  }
+}
+@keyframes moveInBottom{
+  0%{
+     opacity:0;
+     transform: translateY(100px);
+
+  }
+
+  100%{
+    opacity:1;
+    transform: translate(0);
+  }
+
+  @keyframes moveOut{
+  0%{
+     opacity:0;
+     transform: translateZ(100px);
+
+  }
+
+  100%{
+    opacity:1;
+    transform: translate(0);
+  }
