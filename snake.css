@@ -31,6 +31,13 @@
     
 
 }
+.wrongInput{
+  text-transform: uppercase;
+ font-family:'Wendy One', sans-serif;
+  font-size:20px;
+  letter-spacing:3px;
+  margin:5px;
+}
 
 .btn:hover{
   transform: translateY(-3px);
