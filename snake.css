@@ -4,6 +4,18 @@
   box-sizing:border-box;
 }
 
+.credits
+{
+  display: inline-block;
+  position: absolute;
+  bottom:3px;
+  right:10px;
+  background:yellow;
+  padding:10px;
+  color:black;
+  font-family:'Wendy One', sans-serif;
+}
+
 @font-face {
   font-family:Serpens; /*a name to be used later*/
   src: url('Serpens.ttf'); /*URL to font*/
@@ -21,6 +33,13 @@ body
   background-position:center;
 
 
+}
+
+.image
+{
+  display: inline-block;
+  width:30px;
+  height:150px;
 }
 
 
