@@ -20,6 +20,7 @@ body
   background-size:cover;
   background-position:center;
 
+
 }
 
 
@@ -32,6 +33,7 @@ body
   left:90px;
   background-color:green;
 
+
 }
 
 .modal-1
@@ -42,16 +44,16 @@ body
   position: fixed;
   top:0px;
   left:0px;
-<<<<<<< HEAD
+/*<<<<<<< HEAD*/
   background-color:grey;
      animation-name: moveInLeft;
   animation-duration: 1s;
   animation-timing-function: ease-out;
 
-=======
+/*=======*/
   background-image:url("img12.jpg");
   background-size:cover;
->>>>>>> bc0b1c6addff8533afe0616e0eb982d0e21c1528
+/*>>>>>>> bc0b1c6addff8533afe0616e0eb982d0e21c1528*/
 
 
 }
@@ -135,7 +137,7 @@ body
   color:#1E1E24;
   letter-spacing:4px;
   margin:5px;
-
+animation:moveInLeft 1s ease-out;
 }
 
 .tertiary-head
@@ -153,7 +155,8 @@ body
   font-size:60px;
   letter-spacing:3px;
   margin:5px;
-   animation:moveInLeft 1s ease-out;
+  animation:moveInRight 1s ease-out;
+   
 }
 
 .text-field
@@ -164,10 +167,14 @@ body
   color:greenyellow;
   font-size:30px;
   font-family:'Wendy One', sans-serif;
-   animation:moveInLeft 1s ease-out;
- 
+   animation:moveInBottom 1s ease-out 0.75s;
+   animation-fill-mode: backwards;
 
 
+}
+.animate{
+   animation:moveInBottom 1s ease-out 0.75s;
+  animation-fill-mode: backwards;
 }
 
 .button
@@ -182,8 +189,18 @@ body
   color:black;
   background-color:greenyellow;
   font-family:'Wendy One', sans-serif;
-   animation:moveInLeft 1s ease-out;
+   animation:moveInBottom 1s ease-out 0.75s;
+   animation-fill-mode: backwards;
 
+}
+.button:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.button:active{
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
 }
 
 .list
@@ -193,6 +210,7 @@ body
   text-align: left;
   font-size:22px;
   background-color:yellow;
+  animation:moveInRight 1s ease-out;
 
 
 }
@@ -205,7 +223,9 @@ body
 .status
 {
   background-color:yellowgreen;
+
 }
+
 
 
 
@@ -252,3 +272,26 @@ body
     transform: translate(0);
   }
 }
+@keyframes moveInBottom{
+  0%{
+     opacity:0;
+     transform: translateY(100px);
+
+  }
+
+  100%{
+    opacity:1;
+    transform: translate(0);
+  }
+
+  @keyframes moveOut{
+  0%{
+     opacity:0;
+     transform: translateZ(100px);
+
+  }
+
+  100%{
+    opacity:1;
+    transform: translate(0);
+  }
