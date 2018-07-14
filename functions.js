@@ -113,10 +113,8 @@ const LostGame=(positionX,positionY,snake)=>{
  return(temp);
 }
 
-
 //function that stops the game
-
- //this could be added in the earliew function 
+//this could be added in the earliew function 
 const stop=()=>{
  
             positionX=positionY=10;
@@ -147,7 +145,7 @@ const stopGame=()=>{
 const startGame=()=>{
 
             btnP=1;
-            canvas=document.querySelector("canvas");
+            //canvas=document.querySelector("canvas");
             ctx=canvas.getContext("2d");
 
             if(gameOn===true){

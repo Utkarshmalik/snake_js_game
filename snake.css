@@ -7,10 +7,11 @@
 .credits
 {
   display: inline-block;
+  height:100px;
   position: absolute;
   bottom:3px;
-  right:10px;
-  background:yellow;
+  right:0px;
+  background:yellowgreen;
   padding:10px;
   color:black;
   font-family:'Wendy One', sans-serif;
@@ -83,7 +84,8 @@ body
   position:absolute;
   top:30px;
   left:90px;
-  background-color:green;
+  background-color:black;
+  display:none;
 
 
 }
@@ -98,16 +100,17 @@ body
   left:0px;
 /*<<<<<<< HEAD*/
   background-color:grey;
+  /*
      animation-name: moveInLeft;
   animation-duration: 1s;
-  animation-timing-function: ease-out;
+  /animation-timing-function: ease-out;*/
 
 /*=======*/
   background-image:url("img12.jpg");
   background-size:cover;
+  background-position:center;
+
 /*>>>>>>> bc0b1c6addff8533afe0616e0eb982d0e21c1528*/
-
-
 }
 
 .modal-2
@@ -120,6 +123,7 @@ body
   left:0px;
   background-image:url("img12.jpg");
   background-size:cover;
+  background-position:center;
 
 
 }
@@ -135,7 +139,7 @@ body
   background-color:rgba(192,192,192,0.7);
   background-image:url("img12.jpg");
   background-size:cover;
-  display:none;
+  background-position:center;
 }
 
 
@@ -343,7 +347,7 @@ animation:moveInLeft 1s ease-out;
   100%{
     opacity:1;
     transform: translate(0);
-  }
+  }}
 
   @keyframes moveOut{
   0%{
@@ -356,3 +360,4 @@ animation:moveInLeft 1s ease-out;
     opacity:1;
     transform: translate(0);
   }
+}
