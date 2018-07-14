@@ -16,6 +16,7 @@
   font-family:'Wendy One', sans-serif;
   animation:moveInBottom 1s ease-out 0.75s;
    border-radius: 100px;
+   animation-fill-mode: backwards;
 }
 
 .btn:link,
