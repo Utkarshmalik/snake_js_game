@@ -14,7 +14,32 @@
   padding:10px;
   color:black;
   font-family:'Wendy One', sans-serif;
+  animation:moveInBottom 1s ease-out 0.75s;
+   border-radius: 100px;
 }
+
+.btn:link,
+.btn:visited{
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+    padding:10px 20px;
+    color:black;
+    transition: all 0.2s;
+    background-color: "yellowgreen"
+    
+
+}
+
+.btn:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.btn:active{
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+  }
 
 @font-face {
   font-family:Serpens; /*a name to be used later*/
