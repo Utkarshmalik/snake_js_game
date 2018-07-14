@@ -99,7 +99,7 @@ const updateField= ()=>
 {
   for(let i=0;i<snake.length;i++) //looping through snake
 {
- ctx.fillStyle="blue";
+ ctx.fillStyle="white";
 
     ctx.fillRect(snake[i].x*gs,snake[i].y*gs,gs-2,gs-2);//for border because stroke rect is not working
         if(snake[i].x==positionX && snake[i].y==positionY) {
@@ -165,7 +165,7 @@ const game=()=>{
         tail++;
        newTarget()
     }
-    ctx.fillStyle="red";
+    ctx.fillStyle="yellow";
     ctx.fillRect(TargetX*gs,TargetY*gs,gs-2,gs-2);//gs-2 for border because stroke rect is not working
 }
 }

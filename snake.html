@@ -3,6 +3,11 @@
 <head>
 	<title>HTML5 Canvas</title>
 	<link href="snake.css" type="text/css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Monoton|Wendy+One" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+
+
+
 </head>
 
 <body>
@@ -12,25 +17,24 @@
 			<h1 class="primary-head">The Snake Game</h1>
 			<h2 class="tertiary-head">Enter your name below</h2>
 			<input type="text" required class="text-field">
-			<button class="submit_button">Submit</button>
-		</div>
-
+			<button class="button submit_button">Submit</button>
+			</div>
 
 	</div>
 
 	<div class="modal-2">
 		
 			<div class="modal-content">
-				<h1 class="primary-head">WELCOME <span class="username"></span></h1>
+				<h1 class="secondary-head">WELCOME, <span class="username"></span></h1>
 				<h2 class="tertiary-head">KINDLY READ THE INSTRUCTIONS</h2>
-				<ul>
-					<li>1.</li>
-					<li>2.</li>
-					<li>3.</li>
-					<li>4.</li>
-					<li>5.</li>
+				<ul class="list">
+					<li>1.Use your cursor keys: up, left, right, and down.</li>
+					<li>2.Don't run the snake into the wall, or his own tail: you die.</li>
+					<li>3.Eat the colored fruit to gain points.</li>
+					<li>4.Your will get each point for each fruit taken</li>
+					<li>5.Your score will be shown on the top right of your screen</li>
 				</ul>
-				<button class="start_button">proceed to the game</button>
+				<button class="button start_button">Proceed to the game</button>
 			</div>	
 	
 		</div>
@@ -39,31 +43,25 @@
 		<div class="modal-3">
 		
 				<div class="modal-content">
-					<h1 class="primary-head">OOPS!<span class="username"></span></h1>
+					<h1 class="primary-head">OOPS!</h1><span class="username secondary-head"></span>
 					<h2 class="tertiary-head">You have lost the Game </h2><br>
-					<h2 class="status"></h2><br>
-					<button class="restart_button">Play Again</button>
+					<h2 class="status secondary-head"></h2><br>
+					<button class="button restart_button">Play Again</button>
 				</div>	
 		
 			</div>
-	
-
-
-
-
-
-
 
 
 		</div>
 
-		<span class="user-screen"></span>
-		<span class="score-screen"></span>	
+		<span class="tertiary-head user-screen"></span>
+		<span class="tertiary-head score-screen"></span>	
 	<canvas class="canvas" height="600" width="1200" ></canvas>
-	<script src="snake2.js">
-	</script>
-		<script src="modal2.js">
-			</script>
+
+
+
+	<script src="snake2.js"></script>
+	<script src="modal2.js"></script>
 
 </body>
 </html>

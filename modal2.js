@@ -10,6 +10,7 @@ const user_screen=document.getElementsByClassName("user-screen")[0];//user name 
 const score_screen=document.getElementsByClassName("score-screen")[0];// score plate at the top
 
 userName.innerHTML=text_field.value;
+modal_2.style.display="none";
 
 
 const onNameSubmit =()=>
@@ -18,6 +19,8 @@ const onNameSubmit =()=>
   {
   userName.innerHTML=text_field.value;
   modal_1.style.display="none";
+  modal_2.style.display="block";
+
   }
 
   else
@@ -29,7 +32,12 @@ const onNameSubmit =()=>
 const onGameStart= () =>
 {
   setGame();
+
   user_screen.innerHTML="Hey "+text_field.value;
+
+  user_screen.innerHTML="Hey , "+text_field.value;
+  score_screen.innerHTML="Score:"+points;
+
   modal_2.style.display="none";
 }
 
