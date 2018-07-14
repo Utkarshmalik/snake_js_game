@@ -73,19 +73,49 @@ tail = 3;
 
 //because we have to keep moving the snake ,defining the velocity will be better
 //so this function changes the velocity in every direction
+let direction="right";
+let isReverseDirection =false;
+
 const keyPush=(evt)=>{
     switch(evt.keyCode) {
         case 37:
+        if(direction==="right")
+        {
+          isReverseDirection=true;
+        }
+    else
+         {
             xv=-1;yv=0;
+            direction="left"
+          }
             break;
         case 38:
+            if(direction==="down")
+            {
+              isReverseDirection=true;
+            }else{
             xv=0;yv=-1;
+            direction="up"
+          }
             break;
         case 39:
-            xv=1;yv=0;
+         if(direction==="left")
+          {
+            isReverseDirection=true;
+          }else
+            {
+             xv=1;yv=0;
+            direction="right"
+          }
             break;
         case 40:
-            xv=0;yv=1;
+            if(direction==="up")
+        {
+          isReverseDirection=true;
+        }else{
+          direction="down";
+         xv=0;yv=1;
+        }
             break;
     }
 }
