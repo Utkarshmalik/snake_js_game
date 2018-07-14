@@ -30,7 +30,10 @@ const stopGame=()=>{
   gameOn=false
    userName_2.innerHTML=text_field.value;
    status.innerHTML=` Your final score is:${points}`;
+   modal_3.style.animation="moveInLeft 1s ease-out";
    modal_3.style.display="block";
+   
+
   stop();
 }
 

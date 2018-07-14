@@ -14,6 +14,7 @@
   top:30px;
   left:90px;
   background-color:green;
+
 }
 
 .modal-1
@@ -25,6 +26,11 @@
   top:0px;
   left:0px;
   background-color:grey;
+     animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+
+
 
 }
 
@@ -80,4 +86,21 @@
   position:fixed;
   right:20px;
   top:10px;
+}
+
+@keyframes moveInRight{
+  0%{
+     opacity:0;
+     transform: translateX(100px);
+
+  }
+
+    80%{
+    transform: translateX(-10px);
+    }
+
+  100%{
+    opacity:1;
+    transform: translate(0);
+  }
 }

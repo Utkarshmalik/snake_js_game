@@ -30,7 +30,6 @@ const onGameStart= () =>
 {
   setGame();
   user_screen.innerHTML="Hey "+text_field.value;
-  score_screen.innerHTML="Score:"+points;
   modal_2.style.display="none";
 }
 
