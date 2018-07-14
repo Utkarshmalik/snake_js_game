@@ -135,7 +135,7 @@ const updateField= ()=>
     ctx.fillRect(snake[i].x*gs,snake[i].y*gs,gs-2,gs-2);//for border because stroke rect is not working
     if(firstTime){
         if(snake[i].x==positionX && snake[i].y==positionY) {
-            tail = 3;//
+            tail = 2;//
             firstTime=false;
           }
 }
