@@ -8,25 +8,26 @@ const restart_button=document.getElementsByClassName("restart_button")[0]; //the
 const userName=document.getElementsByClassName("username")[0];// the username in the second screen
 const user_screen=document.getElementsByClassName("user-screen")[0];//user name that has to be displayed on the top of the game screen
 const score_screen=document.getElementsByClassName("score-screen")[0];// score plate at the top
+const wrongInput =document.querySelector(".wrongInput");
+
 
 userName.innerHTML=text_field.value;
 modal_2.style.display="none";
 
 
-const onNameSubmit =()=>
-{
-  if(text_field.value!="")
-  {
-  userName.innerHTML=text_field.value;
-  modal_1.style.display="none";
-  modal_2.style.display="block";
+const onNameSubmit =()=>{
 
-  }
+      if(text_field.value!=""){
 
-  else
-  {
-    console.log("Entet the name to proceed"); //we wil show this as a error message on screen later
-  }
+         userName.innerHTML=text_field.value;
+         modal_1.style.display="none";
+         modal_2.style.display="block";
+
+       }else{
+
+       wrongInput.innerHTML="please enter ur name";
+        //we wil show this as a error message on screen later
+       }
 }
 
 const onGameStart= () =>
@@ -49,11 +50,6 @@ const onGameRestart =() =>
   score_screen.innerHTML="Score:"+points;
 
 }
-
-
-
-
-
 
 submit_button.addEventListener("click",onNameSubmit);
 start_button.addEventListener("click",onGameStart);
