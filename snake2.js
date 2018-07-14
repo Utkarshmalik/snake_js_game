@@ -70,6 +70,7 @@ TargetX=TargetY=15;//
 xv=yv=0;//velocity in x and y direction
 let snake=[];
 tail = 3;
+let firstTime=true;
 
 //because we have to keep moving the snake ,defining the velocity will be better
 //so this function changes the velocity in every direction
@@ -132,8 +133,11 @@ const updateField= ()=>
  ctx.fillStyle="white";
 
     ctx.fillRect(snake[i].x*gs,snake[i].y*gs,gs-2,gs-2);//for border because stroke rect is not working
+    if(firstTime){
         if(snake[i].x==positionX && snake[i].y==positionY) {
             tail = 3;//
+            firstTime=false;
+          }
 }
 }
 }
@@ -151,15 +155,14 @@ const LostGame=(positionX,positionY,array)=>
 
   //condition2- if the user touches any part of its tail-for this i have to check each part of its tail and compare
 
-  // for(let i=1;i<array.length;i++)
-  // {
-  //   if(positionX===array[i].x && positionY===array[i].y)
-  //   {
-  //     temp=1;
-  //     return temp
-  //   }
-
-  // }
+  // if(firstTime === false){
+  //   for(let i=0;i<snake.length;i++){
+  //       if(array[i].x==positionX && array[i].y==positionY) {
+  //          temp=1;//
+          
+  //         }
+  //       }
+  //       }
 
  return(temp);
 }
