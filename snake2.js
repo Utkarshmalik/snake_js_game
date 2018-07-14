@@ -146,7 +146,7 @@ const LostGame=(positionX,positionY,array)=>
   if(positionX<-1 || positionY<-1 || positionX>tcX || positionY>tcY)
   {
     temp=1;
-    return(temp);
+    
   }
 
   //condition2- if the user touches any part of its tail-for this i have to check each part of its tail and compare
@@ -156,11 +156,12 @@ const LostGame=(positionX,positionY,array)=>
   //   if(positionX===array[i].x && positionY===array[i].y)
   //   {
   //     temp=1;
+  //     return temp
   //   }
 
   // }
 
-  // return temp;
+ return(temp);
 }
 
 const game=()=>{
