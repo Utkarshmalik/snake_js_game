@@ -43,7 +43,11 @@ const stop=()=>{
   positionX=positionY=10;
   //amking the speed zero other wise even if the game is stopped it will keep moving
   xv=yv=0;
-  points=0
+  points=0;
+  keyPressed=false;
+  tail=3;
+  direction=undefined;
+
 }
 //function for running the game
 const startGame=()=>{
@@ -76,6 +80,7 @@ let firstTime=true;
 //so this function changes the velocity in every direction
 let direction="right";
 let isReverseDirection =false;
+let keyPressed=false;
 
 const keyPush=(evt)=>{
     switch(evt.keyCode) {
@@ -119,6 +124,7 @@ const keyPush=(evt)=>{
         }
             break;
     }
+    keyPressed=true;
 }
 //random target
 const newTarget=()=>{
@@ -135,14 +141,14 @@ const updateField= ()=>
     ctx.fillRect(snake[i].x*gs,snake[i].y*gs,gs-2,gs-2);//for border because stroke rect is not working
     if(firstTime){
         if(snake[i].x==positionX && snake[i].y==positionY) {
-            tail = 2;//
+            tail = 3;//
             firstTime=false;
           }
 }
 }
 }
 
-const LostGame=(positionX,positionY,array)=>
+const LostGame=(positionX,positionY,snake)=>
 {
   let temp=0;
   //conditon1- if the head crooses the border
@@ -155,14 +161,14 @@ const LostGame=(positionX,positionY,array)=>
 
   //condition2- if the user touches any part of its tail-for this i have to check each part of its tail and compare
 
-  // if(firstTime === false){
-  //   for(let i=0;i<snake.length;i++){
-  //       if(array[i].x==positionX && array[i].y==positionY) {
-  //          temp=1;//
+  if(keyPressed === true && tail>5){
+    for(let i=1;i<snake.length;i++){
+        if(snake[i].x==snake[0].x && snake[i].y==snake[0].y) {
+           temp=1;//
           
-  //         }
-  //       }
-  //       }
+          }
+        }
+        }
 
  return(temp);
 }
