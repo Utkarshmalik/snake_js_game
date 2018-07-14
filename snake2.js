@@ -1,69 +1,23 @@
 //I have fixed some issues but generated some other like opposite direction blocking is not present
 //secondly colloision with itself it is just eating it self and not ending the game
 
+
+const status=document.getElementsByClassName("status")[0];
+const userName_2=document.getElementsByClassName("username")[1]; 
+score_screen=document.getElementsByClassName("score-screen")[0];
+
+
+//for audio
 let dead = new Audio();
 let eat = new Audio();
-
 
 dead.src = "audio/dead.mp3";
 eat.src = "audio/eat.mp3";
 
 
-const status=document.getElementsByClassName("status")[0];
-const userName_2=document.getElementsByClassName("username")[1]; 
-score_screen=document.getElementsByClassName("score-screen")[0]
-
-let gameOn=true;//flag to know when we have to start the game
-//this is to set the game interval 
-let btnP =1 
-
-//function to set the game
-const setGame=()=>{
- gameOn=true
-  startGame()
-  //every time new game was started the interval got divided by 10 so to stop that each time we multiply it by 10
-  btnP =btnP*10
-
-}
-//function to stop the game after colloisons with the walls
-const stopGame=()=>{
-  gameOn=false
-   userName_2.innerHTML=text_field.value;
-   status.innerHTML=` Your final score is:${points}`;
-   modal_3.style.animation="moveInLeft 1s ease-out";
-   modal_3.style.display="block";
-   
-
-  stop();
-}
-
-//this could be added in the earliew function 
-const stop=()=>{
-  //setting the position to inital
-  positionX=positionY=10;
-  //amking the speed zero other wise even if the game is stopped it will keep moving
-  xv=yv=0;
-  points=0;
-  keyPressed=false;
-  tail=3;
-  direction=undefined;
-
-}
-//function for running the game
-const startGame=()=>{
-  
-    canvas=document.querySelector("canvas");
-
-    ctx=canvas.getContext("2d");
-    if(gameOn===true){
-    document.addEventListener("keydown",keyPush);
-    setInterval(game,1000 *btnP /10);
-    //each time this function is called the time interval is set 
-    //for example if this function is called the second time btnP=10 so interval will remain constant 
-
-  }
-    
-}
+let gameOn=true;  //flag to know when we have to start the game
+let btnP;  //this is to set the game interval
+let temp_interval;
 
 let points=0;
 positionX=positionY=10;
@@ -126,11 +80,13 @@ const keyPush=(evt)=>{
     }
     keyPressed=true;
 }
+
 //random target
 const newTarget=()=>{
    TargetX=Math.floor(Math.random()*tcX);
       TargetY=Math.floor(Math.random()*tcY);
 }
+
 //function that displays the snake
 const updateField= ()=>
 {
@@ -209,5 +165,70 @@ const game=()=>{
     ctx.fillRect(TargetX*gs,TargetY*gs,gs-2,gs-2);//gs-2 for border because stroke rect is not working
 }
 }
+
+
+
+//function to set the game
+const setGame=()=>{
+  gameOn=true
+   startGame()
+   //every time new game was started the interval got divided by 10 so to stop that each time we multiply it by 10
+   btnP =btnP*10
+ 
+ }
+
+
+
+ //function for running the game
+const startGame=()=>{
+  btnP=1;
+  canvas=document.querySelector("canvas");
+
+  ctx=canvas.getContext("2d");
+  if(gameOn===true){
+  document.addEventListener("keydown",keyPush);
+   temp_interval= setInterval(game,1000 *btnP /10);
+  //each time this function is called the time interval is set 
+  //for example if this function is called the second time btnP=10 so interval will remain constant 
+
+}
+  
+}
+
+
+
+
+
+
+
+ //this could be added in the earliew function 
+const stop=()=>{
+  //setting the position to inital
+  positionX=positionY=10;
+  //amking the speed zero other wise even if the game is stopped it will keep moving
+  xv=yv=0;
+  points=0;
+  keyPressed=false;
+  tail=3;
+  direction=undefined;
+  clearInterval(temp_interval);
+}
+
+
+//function to stop the game after colloisons with the walls
+const stopGame=()=>{
+  gameOn=false
+   userName_2.innerHTML=text_field.value;
+   status.innerHTML=` Your final score is:${points}`;
+   modal_3.style.animation="moveInLeft 1s ease-out";
+   modal_3.style.display="block";
+   
+
+  stop();
+}
+
+
+
+
 
 
