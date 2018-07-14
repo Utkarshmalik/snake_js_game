@@ -175,6 +175,12 @@ animation:moveInLeft 1s ease-out;
 .animate{
    animation:moveInBottom 1s ease-out 0.75s;
   animation-fill-mode: backwards;
+
+}
+.username{
+  text-transform: uppercase;
+   animation:moveInBottom 1s ease-out 0.75s;
+  animation-fill-mode: backwards;
 }
 
 .button
@@ -192,6 +198,9 @@ animation:moveInLeft 1s ease-out;
    animation:moveInBottom 1s ease-out 0.75s;
    animation-fill-mode: backwards;
 
+}
+.start-button{
+  animation-delay: 0s;
 }
 .button:hover{
   transform: translateY(-3px);
